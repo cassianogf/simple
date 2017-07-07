@@ -14,6 +14,8 @@ composer install
 
 ## Step 3: Generate the Application Key 
 
+Rename the `.env.example` file in the project folder to `.env `
+
 Generate the application key by running:
 
 ```
@@ -21,8 +23,6 @@ php artisan key:generate
 ```
 
 ## Step 4: Configuration
-
-Rename the `.env.example` file in the project folder to `.env `
 
 Open `.env` file and configure the database properties.
 
