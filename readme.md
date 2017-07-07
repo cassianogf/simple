@@ -24,7 +24,7 @@ php artisan key:generate
 
 Rename the `.env.example` file in the project folder to `.env `
 
-Open .env file and configure the database properties.
+Open `.env` file and configure the database properties.
 
 Cache the config file
 
