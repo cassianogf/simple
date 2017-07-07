@@ -20,16 +20,11 @@ Generate the application key by running:
 php artisan key:generate
 ```
 
-## Step 4: Rename and configure the environment file
+## Step 4: Configuration
 
 Rename the `.env.example` file in the project folder to `.env `
 
-
-## Step: 5: Configure the database
-
 Open .env file and configure the database properties.
-
-## Step 6: Cache and Migrate
 
 Cache the config file
 
@@ -43,7 +38,7 @@ And migrate, to create database tables
 php artisan migrate
 ```
 
-## Step 7: Serve the application
+## Step 5: Serve the application
 
 Launch the server
 
