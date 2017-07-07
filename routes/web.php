@@ -15,4 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('mesas', 'MesaController');
+Route::group(['middleware' => ['cors'] ], function () {
+	Route::resource('mesas', 'MesaController');
+	Route::post('mesas/reorder', 'MesaController@reorder');
+
+	Route::resource('produtos', 'ProdutoController');
+	Route::resource('funcionarios', 'FuncionarioController');
+});

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mesa;
+use App\Models\Produto;
 
 use Illuminate\Http\Request;
 
-class MesaController extends Controller
+class ProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::all();
+        $produtos = Produto::all();
 
-        return response()->json($mesas);
+        return response()->json($produtos);
     }
 
     /**
@@ -38,14 +38,13 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        $mesa = new Mesa();
+        $produto = new Produto();
 
-        $mesa->name = $request->name;
-        $mesa->status = 'fre';
-        $mesa->capacity = $request->capacity;
-        $mesa->save();
+        $produto->name = $request->name;
+        $produto->value = $request->value;
+        $produto->save();
 
-        return response()->json($mesa);
+        return response()->json($produto);
     }
 
     /**
@@ -56,9 +55,9 @@ class MesaController extends Controller
      */
     public function show($id)
     {
-        $mesa = Mesa::findOrFail($id);
+        $produto = Produto::findOrFail($id);
 
-        return response()->json($mesa);
+        return response()->json($produto);
     }
 
     /**
@@ -81,14 +80,13 @@ class MesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mesa = Mesa::findOrFail($id);
+        $produto = Produto::findOrFail($id);
 
-        $mesa->name = $request->name;
-        $mesa->status = $request->status;
-        $mesa->capacity = $request->capacity;
-        $mesa->save();
+        $produto->name = $request->name;
+        $produto->value = $request->value;
+        $produto->save();
 
-        return response()->json($mesa);
+        return response()->json($produto);
     }
 
     /**
@@ -99,20 +97,8 @@ class MesaController extends Controller
      */
     public function destroy($id)
     {
-        $mesa = Mesa::findOrFail($id);
-        $mesa->delete();
-
-        return response()->json('true');
-    }
-
-    public function reorder() {
-        $mesas = Mesa::all();
-        $i = 1;
-
-        foreach($mesas as $mesa) {
-            $mesa->name = $i++;
-            $mesa->save();
-        }
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
 
         return response()->json('true');
     }

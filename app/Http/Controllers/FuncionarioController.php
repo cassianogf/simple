@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mesa;
+use App\Models\Funcionario;
 
 use Illuminate\Http\Request;
 
-class MesaController extends Controller
+class FuncionarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::all();
+        $funcionarios = Funcionario::all();
 
-        return response()->json($mesas);
+        return response()->json($funcionarios);
     }
 
     /**
@@ -38,14 +38,13 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        $mesa = new Mesa();
+        $funcionario = new Funcionario();
 
-        $mesa->name = $request->name;
-        $mesa->status = 'fre';
-        $mesa->capacity = $request->capacity;
-        $mesa->save();
+        $funcionario->name = $request->name;
+        $funcionario->telephone = $request->telephone;
+        $funcionario->save();
 
-        return response()->json($mesa);
+        return response()->json($funcionario);
     }
 
     /**
@@ -56,9 +55,9 @@ class MesaController extends Controller
      */
     public function show($id)
     {
-        $mesa = Mesa::findOrFail($id);
+        $funcionario = Funcionario::findOrFail($id);
 
-        return response()->json($mesa);
+        return response()->json($funcionario);
     }
 
     /**
@@ -81,14 +80,13 @@ class MesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mesa = Mesa::findOrFail($id);
+        $funcionario = Funcionario::findOrFail($id);
 
-        $mesa->name = $request->name;
-        $mesa->status = $request->status;
-        $mesa->capacity = $request->capacity;
-        $mesa->save();
+        $funcionario->name = $request->name;
+        $funcionario->value = $request->value;
+        $funcionario->save();
 
-        return response()->json($mesa);
+        return response()->json($funcionario);
     }
 
     /**
@@ -99,20 +97,8 @@ class MesaController extends Controller
      */
     public function destroy($id)
     {
-        $mesa = Mesa::findOrFail($id);
-        $mesa->delete();
-
-        return response()->json('true');
-    }
-
-    public function reorder() {
-        $mesas = Mesa::all();
-        $i = 1;
-
-        foreach($mesas as $mesa) {
-            $mesa->name = $i++;
-            $mesa->save();
-        }
+        $funcionario = Funcionario::findOrFail($id);
+        $funcionario->delete();
 
         return response()->json('true');
     }
